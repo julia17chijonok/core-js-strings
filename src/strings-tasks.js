@@ -138,7 +138,10 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
-  return str.repeat(times > 0 ? times : 0);
+  if (times > 0) {
+    return str.repeat(times);
+  }
+  return str.repeat(0);
 }
 
 /**
@@ -156,7 +159,8 @@ function repeatString(str, times) {
 function removeFirstOccurrences(str, value) {
   const index = str.indexOf(value);
   if (index !== -1) {
-    return str.slice(0, index) + str.slice(index + value.length);
+    const res = str.slice(0, index) + str.slice(index + value.length);
+    return res;
   }
   return str;
 }
@@ -176,7 +180,8 @@ function removeFirstOccurrences(str, value) {
 function removeLastOccurrences(str, value) {
   const lastIndex = str.lastIndexOf(value);
   if (lastIndex !== -1) {
-    return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
+    const res = str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
+    return res;
   }
   return str;
 }
